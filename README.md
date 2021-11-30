@@ -1,5 +1,6 @@
 # 90DaysDSA
-[image](https://cdn.discordapp.com/attachments/785953575661862953/915287267550044180/Purple_and_Pink_Organic_and_Handcrafted_Welcome_Message_Elementary_Back_to_School_Banner.png)
+
+(https://cdn.discordapp.com/attachments/785953575661862953/915287267550044180/Purple_and_Pink_Organic_and_Handcrafted_Welcome_Message_Elementary_Back_to_School_Banner.png)
 
 
 90 Days of DSA Roadmap 
