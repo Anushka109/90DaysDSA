@@ -1,5 +1,7 @@
 # 90DaysDSA
-https://cdn.discordapp.com/attachments/785953575661862953/915287267550044180/Purple_and_Pink_Organic_and_Handcrafted_Welcome_Message_Elementary_Back_to_School_Banner.png
+[image](https://cdn.discordapp.com/attachments/785953575661862953/915287267550044180/Purple_and_Pink_Organic_and_Handcrafted_Welcome_Message_Elementary_Back_to_School_Banner.png)
+
+
 90 Days of DSA Roadmap 
 Day 1 & 2 : Learn about space and time complexity. One of the most important part of programming is knowing the complexity of the code you writing.
 
@@ -16,7 +18,7 @@ Day 31 to 45 : Learn about more and a little more complex data structures and al
 
 (i) Searching
 
-(ii) Sorting {
+(ii) Sorting 
 
              \1\ Bubble Sort
              \2\ Insertion Sort
@@ -31,9 +33,9 @@ Day 31 to 45 : Learn about more and a little more complex data structures and al
 
 (Vi)Sliding Window
 
-Day 46 to 70 : Learn about DP and Graphs ->
+Day 46 to 70 : Learn about DP and Graphs 
 
-(i) Graphics ->
+(i) Graphics 
 
              \1\ Breadth First Search [BFS]  
              \2\ Bepth First Search [DFS] 
