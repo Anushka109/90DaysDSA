@@ -1,0 +1,89 @@
+  TIME COMPLEXITY
+
+Time complexity of an algorithm signifies the total time required by the program to run till its completion.
+The time complexity of algorithms is most commonly expressed using the big O notation. It's an asymptotic notation to represent the time complexity. 
+
+Calculating Time Complexity
+Now lets tap onto the next big topic related to Time complexity, which is How to Calculate Time Complexity. It becomes very confusing some times, but we will
+try to explain it in the simplest way. Now the most common metric for calculating time complexity is Big O notation. This removes all constant factors so that the 
+running time can be estimated in relation to N, as N approaches infinity. 
+
+Types of Notations for Time Complexity
+Now we will discuss and understand the various notations used for Time Complexity.
+Big Oh denotes "fewer than or the same as" <expression> iterations.
+Big Omega denotes "more than or the same as" <expression> iterations.
+Big Theta denotes "the same as" <expression> iterations.
+Little Oh denotes "fewer than" <expression> iterations.
+Little Omega denotes "more than" <expression> iterations.
+
+There are different types of time complexities used, let’s see one by one:
+
+1. Constant time – O (1)
+2. Linear time – O (n)
+3. Logarithmic time – O (log n)
+4. Quadratic time – O (n^2)
+5. Cubic time – O (n^3)
+and many more complex notations like Exponential time, Quasilinear time, factorial time, etc. are used based on the type of functions defined.
+
+1.
+#include <stdio.h>
+int main()
+{
+	printf("Hello World");
+}
+Output
+Hello World
+In above code “Hello World!!!” print only once on a screen. So, time complexity is constant: O(1) i.e. every time constant amount of time require to execute code, 
+no matter which operating system or which machine configurations you are using. 
+
+Now consider another code: 
+
+2.
+#include <stdio.h>
+void main()
+{
+    int i, n = 8;
+    for (i = 1; i <= n; i++) {
+        printf("Hello Word !!!\n");
+    }
+}
+Output
+Hello Word !!!
+Hello Word !!!
+Hello Word !!!
+Hello Word !!!
+Hello Word !!!
+Hello Word !!!
+Hello Word !!!
+Hello Word !!!
+In above code “Hello World!!!” will print N times. So, time complexity of above code is O(N).
+
+3.
+for (let i = 0; i < 4; i++) {
+  statement1;
+  statement2;
+}
+That code is O(1) because it no longer depends on the input size. It will always run statement 1 and 2 four times.
+
+4.
+for (let i = 0; i < n; i++) {
+  statement1;
+
+  for (let j = 0; j < m; j++) {
+    statement2;
+    statement3;
+  }
+}
+For this case, you would have something like this:
+
+1
+T(n) = n * [t(statement1) + m * t(statement2...3)]
+Assuming the statements from 1 to 3 are O(1), we would have a runtime of O(n * m). If instead of m, you had to iterate on n again, then
+it would be O(n^2). Another typical case is having a function inside a loop.
+
+How to Compare Algorithms?
+To compare algorithms, let us define a few objective measures:
+Execution times: Not a good measure as execution times are specific to a particular computer.
+A number of statements executed: Not a good measure, since the number of statements varies with the programming language as well as the style of the individual programmer.
+Ideal solution:  Let us assume that we express the running time of a given algorithm as a function of the input size n (i.e., f(n)) and compare these different functions
+corresponding to running times. This kind of comparison is independent of machine time, programming style, etc.
