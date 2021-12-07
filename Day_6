@@ -1,0 +1,93 @@
+Backtracking is a technique based on algorithm to solve problem. It uses recursive calling to find the solution by building a solution step by step increasing values with time. It removes the solutions that doesn't give rise to the solution of the problem based on the constraints given to solve the problem.
+Backtracking algorithm is applied to some specific types of problems,
+•	Decision problem used to find a feasible solution of the problem.
+•	Optimization problem used to find the best solution that can be applied.
+•	Enumeration problem used to find the set of all feasible solutions of the problem.
+In backtracking problem, the algorithm tries to find a sequence path to the solution which has some small checkpoints from where the problem can backtrack if no feasible solution is found for the problem.
+We have a example called Rat in a Maze:-
+A Maze is given as N*N binary matrix of blocks where source block is the upper left most block i.e., maze[0][0] and destination block is lower rightmost block i.e., maze[N-1][N-1]. A rat starts from source and has to reach the destination. The rat can move only in two directions: forward and down. In the maze matrix, 0 means the block is a dead end and 1 means the block can be used in the path from source to destination. Note that this is a simple version of the typical Maze problem. For example, a more complex version can be that the rat can move in 4 directions and a more complex version can be with a limited number of moves.
+I have done the program with the array(Maze) as below
+{1,0,1,0,1}
+{1,1,1,1,1}
+{0,1,0,1,0}
+{1,0,0,1,1}
+{1,1,1,0,1}
+The solution to this maze will be
+{1,0,0,0,0}
+{1,1,1,1,0}
+{0,0,0,1,0}
+{0,0,0,1,1}
+{0,0,0,0,1}
+#include <iostream>
+using namespace std;
+bool isSafe(int **arr, int x, int y, int n)
+{
+    if (x < n && y < n && arr[x][y] == 1)
+    {
+        return true;
+    }
+    return false;
+}
+bool ratinMaze(int **arr, int x, int y, int n, int **solArr)
+{
+    if (x == n - 1 && y == n - 1)
+    {
+        solArr[x][y] = 1;
+        return true;
+    }
+    if (isSafe(arr, x, y, n))
+    {
+        solArr[x][y] = 1;
+        if (ratinMaze(arr, x + 1, y, n, solArr))
+        {
+            return true;
+        }
+        if (ratinMaze(arr, x, y + 1, n, solArr))
+        {
+            return true;
+        }
+        solArr[x][y] = 0; // backtracking
+        return false;
+    }
+    return false;
+}
+int main()
+{
+    int n;
+    cout << "Enter the size of the 2-D array\n";
+    cin >> n;
+    int **arr = new int *[n];
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = new int[n];
+    }
+    cout << "Enter the array\n";
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+        {
+            cin >> arr[i][j];
+        }
+    int **solArr = new int *[n];
+    for (int i = 0; i < n; i++)
+    {
+        solArr[i] = new int[n];
+        for (int j = 0; j < n; j++)
+        {
+            solArr[i][j] = 0;
+        }
+    }
+    if (ratinMaze(arr, 0, 0, n, solArr))
+    {
+        cout << "\nThe solution will be:-" << endl;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+                cout << solArr[i][j] << " ";
+            cout << endl;
+        }
+    }
+    return 0;
+}
+
+
+
