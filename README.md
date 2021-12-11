@@ -16,3 +16,11 @@ Day 3-10
 
 Day 11-30
 
+•	Learn about the basic Data Structure
+
+•	Array
+
+•	Linked List
+
+•	Stacks & Queues
+
