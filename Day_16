@@ -1,0 +1,116 @@
+Print left rotation of array in O(n) time and O(1) space
+Given an array of size n and multiple values around which we need to left rotate the array. How to quickly print multiple left rotations?
+Examples : 
+Input : 
+arr[] = {1, 3, 5, 7, 9}
+k1 = 1
+k2 = 3
+k3 = 4
+k4 = 6
+Output : 
+3 5 7 9 1
+7 9 1 3 5
+9 1 3 5 7
+3 5 7 9 1
+
+Input : 
+arr[] = {1, 3, 5, 7, 9}
+k1 = 14 
+Output : 
+9 1 3 5 7
+Method I:
+The solution discussed above requires extra space. In this post, an optimized solution is discussed that doesn’t require extra space.
+// JAVA implementation of left rotation
+// of an array K number of times
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+ 
+class arr_rot {
+    // Function to leftRotate array multiple
+    // times
+    static void leftRotate(int arr[], int n, int k)
+    {
+        /* To get the starting point of
+        rotated array */
+        int mod = k % n;
+ 
+        // Prints the rotated array from
+        // start position
+        for (int i = 0; i < n; ++i)
+            System.out.print(arr[(i + mod) % n] + " ");
+ 
+        System.out.println();
+    }
+ 
+    // Driver code
+    public static void main(String[] args)
+    {
+        int arr[] = { 1, 3, 5, 7, 9 };
+        int n = arr.length;
+ 
+        int k = 2;
+       
+          // Function Call
+        leftRotate(arr, n, k);
+ 
+        k = 3;
+       
+          // Function Call
+        leftRotate(arr, n, k);
+ 
+        k = 4;
+       
+          // Function Call
+        leftRotate(arr, n, k);
+    }
+}
+Output
+5 7 9 1 3 
+7 9 1 3 5 
+9 1 3 5 7 
+Method II:  
+In the below implementation we will use Standard Template Library (STL) which will be making the solution more optimize and easy to Implement.
+// Java implementation for print left
+// rotation of any array K times
+import java.io.*;
+import java.util.*;
+ 
+class GFG{
+     
+// Function for the k times left rotation
+static void leftRotate(Integer arr[], int k,
+                                      int n)
+{
+   
+     // In Collection class rotate function
+     // takes two parameters - the name of
+     // array and the position by which it
+     // should be rotated
+     // The below function will be rotating
+     // the array left  in linear time
+      
+     // Collections.rotate()rotate the
+     // array from right hence n-k
+    Collections.rotate(Arrays.asList(arr), n - k);
+     
+    // Print the rotated array from start position
+    for(int i = 0; i < n; i++)
+        System.out.print(arr[i] + " ");
+}
+ 
+// Driver code
+public static void main(String[] args)
+{
+    Integer arr[] = { 1, 3, 5, 7, 9 };
+    int n = arr.length;
+    int k = 2;
+     
+    // Function call
+    leftRotate(arr, k, n);
+}
+}
+Output
+5 7 9 1 3 
+Note: the array itself gets updated after the rotation.
+
