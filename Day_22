@@ -1,0 +1,157 @@
+Circular Linked List | (Introduction and Applications)
+Circular linked list is a linked list where all nodes are connected to form a circle. There is no NULL at the end. A circular linked list can be a singly circular linked list or doubly circular linked list.
+Advantages of Circular Linked Lists:
+1) Any node can be a starting point. We can traverse the whole list by starting from any point. We just need to stop when the first visited node is visited again.
+2) Useful for implementation of queue. Unlike this implementation, we don’t need to maintain two pointers for front and rear if we use circular linked list. We can maintain a pointer to the last inserted node and front can always be obtained as next of last.
+3) Circular lists are useful in applications to repeatedly go around the list. For example, when multiple applications are running on a PC, it is common for the operating system to put the running applications on a list and then to cycle through them, giving each of them a slice of time to execute, and then making them wait while the CPU is given to another application. It is convenient for the operating system to use a circular list so that when it reaches the end of the list it can cycle around to the front of the list.
+4) Circular Doubly Linked Lists are used for implementation of advanced data structures like Fibonacci Heap.
+Circular Singly Linked List | Insertion
+Why Circular? In a singly linked list, for accessing any node of the linked list, we start traversing from the first node. If we are at any node in the middle of the list, then it is not possible to access nodes that precede the given node. This problem can be solved by slightly altering the structure of a singly linked list. In a singly linked list, the next part (pointer to next node) is NULL. If we utilize this link to point to the first node, then we can reach the preceding nodes. Refer to this for more advantages of circular linked lists.
+The structure thus formed is a circular singly linked list and looks like this: 
+ the implementation and insertion of a node in a Circular Linked List using a singly linked list are explained.
+Implementation 
+To implement a circular singly linked list, we take an external pointer that points to the last node of the list. If we have a pointer last pointing to the last node, then last -> next will point to the first node. 
+ 
+The pointer last points to node Z and last -> next points to node P.
+Why have we taken a pointer that points to the last node instead of the first node? 
+For the insertion of a node at the beginning, we need to traverse the whole list. Also, for insertion at the end, the whole list has to be traversed. If instead of start pointer, we take a pointer to the last node, then in both cases there won’t be any need to traverse the whole list. So insertion at the beginning or at the end takes constant time, irrespective of the length of the list.
+Insertion 
+A node can be added in three ways: 
+•	Insertion in an empty list
+•	Insertion at the beginning of the list
+•	Insertion at the end of the list
+•	Insertion in between the nodes
+The following is a complete program that uses all of the above methods to create a circular singly linked list.  
+
+#include<bits/stdc++.h>
+using namespace std;
+ 
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+ 
+struct Node *addToEmpty(struct Node *last, int data)
+{
+    // This function is only for empty list
+    if (last != NULL)
+      return last;
+ 
+    // Creating a node dynamically.
+    struct Node *temp =
+           (struct Node*)malloc(sizeof(struct Node));
+ 
+    // Assigning the data.
+    temp -> data = data;
+    last = temp;
+ 
+    // Creating the link.
+    last -> next = last;
+ 
+    return last;
+}
+ 
+struct Node *addBegin(struct Node *last, int data)
+{
+    if (last == NULL)
+        return addToEmpty(last, data);
+ 
+    struct Node *temp =
+            (struct Node *)malloc(sizeof(struct Node));
+ 
+    temp -> data = data;
+    temp -> next = last -> next;
+    last -> next = temp;
+ 
+    return last;
+}
+ 
+struct Node *addEnd(struct Node *last, int data)
+{
+    if (last == NULL)
+        return addToEmpty(last, data);
+     
+    struct Node *temp =
+        (struct Node *)malloc(sizeof(struct Node));
+ 
+    temp -> data = data;
+    temp -> next = last -> next;
+    last -> next = temp;
+    last = temp;
+ 
+    return last;
+}
+ 
+struct Node *addAfter(struct Node *last, int data, int item)
+{
+    if (last == NULL)
+        return NULL;
+ 
+    struct Node *temp, *p;
+    p = last -> next;
+    do
+    {
+        if (p ->data == item)
+        {
+            temp = (struct Node *)malloc(sizeof(struct Node));
+            temp -> data = data;
+            temp -> next = p -> next;
+            p -> next = temp;
+ 
+            if (p == last)
+                last = temp;
+            return last;
+        }
+        p = p -> next;
+    }  while(p != last -> next);
+ 
+    cout << item << " not present in the list." << endl;
+    return last;
+ 
+}
+ 
+void traverse(struct Node *last)
+{
+    struct Node *p;
+ 
+    // If list is empty, return.
+    if (last == NULL)
+    {
+        cout << "List is empty." << endl;
+        return;
+    }
+ 
+    // Pointing to first Node of the list.
+    p = last -> next;
+ 
+    // Traversing the list.
+    do
+    {
+        cout << p -> data << " ";
+        p = p -> next;
+ 
+    }
+    while(p != last->next);
+ 
+}
+ 
+// Driven Program
+int main()
+{
+    struct Node *last = NULL;
+ 
+    last = addToEmpty(last, 6);
+    last = addBegin(last, 4);
+    last = addBegin(last, 2);
+    last = addEnd(last, 8);
+    last = addEnd(last, 12);
+    last = addAfter(last, 10, 8);
+ 
+    traverse(last);
+ 
+    return 0;
+}
+Output:  
+2 4 6 8 10 12
+
