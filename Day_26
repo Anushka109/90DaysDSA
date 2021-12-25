@@ -1,0 +1,125 @@
+Queue Interface In Java
+The Queue interface present in the java.util package and extends the Collection interface is used to hold the elements about to be processed in FIFO(First In First Out) order. It is an ordered list of objects with its use limited to insert elements at the end of the list and deleting elements from the start of the list, (i.e.), it follows the FIFO or the First-In-First-Out principle.
+ 
+Being an interface the queue needs a concrete class for the declaration and the most common classes are the PriorityQueue and LinkedList in Java. Note that neither of these implementations are thread safe. PriorityBlockingQueue is one alternative implementation if thread safe implementation is needed.
+Declaration: The Queue interface is declared as:
+public interface Queue extends Collection 
+ 
+Creating Queue Objects
+Since Queue is an interface, objects cannot be created of the type queue. We always need a class which extends this list in order to create an object. And also, after the introduction of Generics in Java 1.5, it is possible to restrict the type of object that can be stored in the Queue. This type-safe queue can be defined as:
+// Obj is the type of the object to be stored in Queue 
+Queue<Obj> queue = new PriorityQueue<Obj> (); 
+ 
+Example of a Queue:
+•	Java
+// Java program to demonstrate a Queue
+ 
+import java.util.LinkedList;
+import java.util.Queue;
+ 
+public class QueueExample {
+ 
+    public static void main(String[] args)
+    {
+        Queue<Integer> q
+            = new LinkedList<>();
+ 
+        // Adds elements {0, 1, 2, 3, 4} to
+        // the queue
+        for (int i = 0; i < 5; i++)
+            q.add(i);
+ 
+        // Display contents of the queue.
+        System.out.println("Elements of queue "
+                           + q);
+ 
+        // To remove the head of queue.
+        int removedele = q.remove();
+        System.out.println("removed element-"
+                           + removedele);
+ 
+        System.out.println(q);
+ 
+        // To view the head of queue
+        int head = q.peek();
+        System.out.println("head of queue-"
+                           + head);
+ 
+        // Rest all methods of collection
+        // interface like size and contains
+        // can be used with this
+        // implementation.
+        int size = q.size();
+        System.out.println("Size of queue-"
+                           + size);
+    }
+}
+Output: 
+Elements of queue [0, 1, 2, 3, 4]
+removed element-0
+[1, 2, 3, 4]
+head of queue-1
+Size of queue-4
+ 
+Operations on Queue Interface
+Let’s see how to perform a few frequently used operations on the queue using the Priority Queue class.
+1. Adding Elements: In order to add an element in a queue, we can use the add() method. The insertion order is not retained in the PriorityQueue. The elements are stored based on the priority order which is ascending by default. 
+•	Java
+// Java program to add elements
+// to a Queue
+ 
+import java.util.*;
+ 
+public class GFG {
+ 
+    public static void main(String args[])
+    {
+        Queue<String> pq = new PriorityQueue<>();
+ 
+        pq.add("Geeks");
+        pq.add("For");
+        pq.add("Geeks");
+ 
+        System.out.println(pq);
+    }
+}
+Output: 
+[For, Geeks, Geeks]
+ 
+2. Removing Elements: In order to remove an element from a queue, we can use the remove() method. If there are multiple such objects, then the first occurrence of the object is removed. Apart from that, poll() method is also used to remove the head and return it. 
+
+
+
+// Java program to remove elements
+// from a Queue
+ 
+import java.util.*;
+ 
+public class GFG {
+ 
+    public static void main(String args[])
+    {
+        Queue<String> pq = new PriorityQueue<>();
+ 
+        pq.add("Geeks");
+        pq.add("For");
+        pq.add("Geeks");
+ 
+        System.out.println("Initial Queue " + pq);
+ 
+        pq.remove("Geeks");
+ 
+        System.out.println("After Remove " + pq);
+ 
+        System.out.println("Poll Method " + pq.poll());
+ 
+        System.out.println("Final Queue " + pq);
+    }
+}
+Output: 
+Initial Queue [For, Geeks, Geeks]
+After Remove [For, Geeks]
+Poll Method For
+Final Queue [Geeks]
+ 
+
