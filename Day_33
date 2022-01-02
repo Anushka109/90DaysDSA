@@ -1,0 +1,119 @@
+Fibonacci Search
+
+Given a sorted array arr[] of size n and an element x to be searched in it. Return index of x if it is present in array else return -1. 
+Examples: 
+Input:  arr[] = {2, 3, 4, 10, 40}, x = 10
+Output:  3
+Element x is present at index 3.
+
+Input:  arr[] = {2, 3, 4, 10, 40}, x = 11
+Output:  -1
+Element x is not present.
+Fibonacci Search is a comparison-based technique that uses Fibonacci numbers to search an element in a sorted array.
+Similarities with Binary Search:  
+
+1.	Works for sorted arrays
+2.	A Divide and Conquer Algorithm.
+3.	Has Log n time complexity.
+Differences with Binary Search: 
+1.	Fibonacci Search divides given array into unequal parts
+2.	Binary Search uses a division operator to divide range. Fibonacci Search doesn’t use /, but uses + and -. The division operator may be costly on some CPUs.
+3.	Fibonacci Search examines relatively closer elements in subsequent steps. So when the input array is big that cannot fit in CPU cache or even in RAM, Fibonacci Search can be useful.
+Background: 
+Fibonacci Numbers are recursively defined as F(n) = F(n-1) + F(n-2), F(0) = 0, F(1) = 1. First few Fibinacci Numbers are 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, …
+Observations: 
+Below observation is used for range elimination, and hence for the O(log(n)) complexity.  
+
+
+
+F(n - 2) &approx; (1/3)*F(n) and 
+F(n - 1) &approx; (2/3)*F(n).
+Algorithm: 
+Let the searched element be x.
+The idea is to first find the smallest Fibonacci number that is greater than or equal to the length of the given array. Let the found Fibonacci number be fib (m’th Fibonacci number). We use (m-2)’th Fibonacci number as the index (If it is a valid index). Let (m-2)’th Fibonacci Number be i, we compare arr[i] with x, if x is same, we return i. Else if x is greater, we recur for subarray after i, else we recur for subarray before i.
+Below is the complete algorithm 
+Let arr[0..n-1] be the input array and the element to be searched be x.  
+1.	Find the smallest Fibonacci Number greater than or equal to n. Let this number be fibM [m’th Fibonacci Number]. Let the two Fibonacci numbers preceding it be fibMm1 [(m-1)’th Fibonacci Number] and fibMm2 [(m-2)’th Fibonacci Number].
+2.	While the array has elements to be inspected: 
+1.	Compare x with the last element of the range covered by fibMm2
+2.	If x matches, return index
+3.	Else If x is less than the element, move the three Fibonacci variables two Fibonacci down, indicating elimination of approximately rear two-third of the remaining array.
+4.	Else x is greater than the element, move the three Fibonacci variables one Fibonacci down. Reset offset to index. Together these indicate the elimination of approximately front one-third of the remaining array.
+3.	Since there might be a single element remaining for comparison, check if fibMm1 is 1. If Yes, compare x with that remaining element. If match, return index.
+4.	#include <stdio.h>
+5.	 
+6.	// Utility function to find minimum of two elements
+7.	int min(int x, int y) { return (x <= y) ? x : y; }
+8.	 
+9.	/* Returns index of x if present,  else returns -1 */
+10.	int fibMonaccianSearch(int arr[], int x, int n)
+11.	{
+12.	    /* Initialize fibonacci numbers */
+13.	    int fibMMm2 = 0; // (m-2)'th Fibonacci No.
+14.	    int fibMMm1 = 1; // (m-1)'th Fibonacci No.
+15.	    int fibM = fibMMm2 + fibMMm1; // m'th Fibonacci
+16.	 
+17.	    /* fibM is going to store the smallest Fibonacci
+18.	       Number greater than or equal to n */
+19.	    while (fibM < n) {
+20.	        fibMMm2 = fibMMm1;
+21.	        fibMMm1 = fibM;
+22.	        fibM = fibMMm2 + fibMMm1;
+23.	    }
+24.	 
+25.	    // Marks the eliminated range from front
+26.	    int offset = -1;
+27.	 
+28.	    /* while there are elements to be inspected. Note that
+29.	       we compare arr[fibMm2] with x. When fibM becomes 1,
+30.	       fibMm2 becomes 0 */
+31.	    while (fibM > 1) {
+32.	        // Check if fibMm2 is a valid location
+33.	        int i = min(offset + fibMMm2, n - 1);
+34.	 
+35.	        /* If x is greater than the value at index fibMm2,
+36.	           cut the subarray array from offset to i */
+37.	        if (arr[i] < x) {
+38.	            fibM = fibMMm1;
+39.	            fibMMm1 = fibMMm2;
+40.	            fibMMm2 = fibM - fibMMm1;
+41.	            offset = i;
+42.	        }
+43.	 
+44.	        /* If x is greater than the value at index fibMm2,
+45.	           cut the subarray after i+1  */
+46.	        else if (arr[i] > x) {
+47.	            fibM = fibMMm2;
+48.	            fibMMm1 = fibMMm1 - fibMMm2;
+49.	            fibMMm2 = fibM - fibMMm1;
+50.	        }
+51.	 
+52.	        /* element found. return index */
+53.	        else
+54.	            return i;
+55.	    }
+56.	 
+57.	    /* comparing the last element with x */
+58.	    if (fibMMm1 && arr[offset + 1] == x)
+59.	        return offset + 1;
+60.	 
+61.	    /*element not found. return -1 */
+62.	    return -1;
+63.	}
+64.	 
+65.	/* driver function */
+66.	int main(void)
+67.	{
+68.	    int arr[]
+69.	        = { 10, 22, 35, 40, 45, 50, 80, 82, 85, 90, 100,235};
+70.	    int n = sizeof(arr) / sizeof(arr[0]);
+71.	    int x = 235;
+72.	      int ind = fibMonaccianSearch(arr, x, n);
+73.	  if(ind>=0)
+74.	    printf("Found at index: %d",ind);
+75.	  else
+76.	    printf("%d isn't present in the array",x);
+77.	    return 0;78.	}
+Output
+Found at index: 11
+
