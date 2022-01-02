@@ -24,3 +24,8 @@ Day 11-30
 
 •	Stacks & Queues
 
+Day 31-45
+
+•	Searching
+
+•	Sorting 
