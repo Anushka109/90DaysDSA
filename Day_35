@@ -1,0 +1,114 @@
+Binary Insertion Sort
+
+We can use binary search to reduce the number of comparisons in normal insertion sort. Binary Insertion Sort uses binary search to find the proper location to insert the selected item at each iteration. 
+In normal insertion sort, it takes O(n) comparisons (at nth iteration) in the worst case. We can reduce it to O(log n) by using binary search.
+// Java Program implementing
+// binary insertion sort
+ 
+import java.util.Arrays;
+class GFG
+{
+   
+    public static void main(String[] args)
+    {
+        final int[] arr = { 37, 23, 0,   17, 12, 72,
+                            31, 46, 100, 88, 54 };
+ 
+        new GFG().sort(arr);
+ 
+        for (int i = 0; i < arr.length; i++)
+            System.out.print(arr[i] + " ");
+    }
+ 
+    // Driver Code
+    public void sort(int array[])
+    {
+        for (int i = 1; i < array.length; i++)
+        {
+            int x = array[i];
+ 
+            // Find location to insert
+            // using binary search
+            int j = Math.abs(
+                Arrays.binarySearch(array, 0,
+                                    i, x) + 1);
+ 
+            // Shifting array to one
+            // location right
+            System.arraycopy(array, j,
+                             array, j + 1, i - j);
+ 
+            // Placing element at its
+            // correct location
+            array[j] = x;
+        }
+    }
+}
+ 
+// Code contributed by Mohit Gupta_OMG
+Output
+Sorted array: 
+0 12 17 23 31 37 46 54 72 88 100 
+Time Complexity: The algorithm as a whole still has a running worst-case running time of O(n2) because of the series of swaps required for each insertion. 
+Another approach: Following is an iterative implementation of the above recursive code
+
+•	import java.io.*;
+•	 
+•	class GFG {
+•	 
+•	// iterative implementation
+•	static int binarySearch(int a[], int item, int low, int high)
+•	{
+•	    while (low <= high) {
+•	        int mid = low + (high - low) / 2;
+•	        if (item == a[mid])
+•	            return mid + 1;
+•	        else if (item > a[mid])
+•	            low = mid + 1;
+•	        else
+•	            high = mid - 1;
+•	    }
+•	 
+•	    return low;
+•	}
+•	 
+•	// Function to sort an array a[] of size 'n'
+•	static void insertionSort(int a[], int n)
+•	{
+•	    int i, loc, j, k, selected;
+•	 
+•	    for (i = 1; i < n; ++i) {
+•	        j = i - 1;
+•	        selected = a[i];
+•	 
+•	        // find location where selected should be inseretd
+•	        loc = binarySearch(a, selected, 0, j);
+•	 
+•	        // Move all elements after location to create space
+•	        while (j >= loc) {
+•	            a[j + 1] = a[j];
+•	            j--;
+•	        }
+•	        a[j + 1] = selected;
+•	    }
+•	}
+•	 
+•	// Driver Code
+•	public static void main (String[] args)
+•	{
+•	    int a[]
+•	        = { 37, 23, 0, 17, 12, 72, 31, 46, 100, 88, 54 };
+•	    int n = a.length, i;
+•	 
+•	    insertionSort(a, n);
+•	 
+•	    System.out.println("Sorted array:");
+•	    for (i = 0; i < n; i++)
+•	        System.out.print(a[i] +" ");
+•	 
+•	}
+•	}•	
+Output
+Sorted array: 
+0 12 17 23 31 37 46 54 72 88 100 
+
