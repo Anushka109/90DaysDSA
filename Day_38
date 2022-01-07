@@ -1,0 +1,75 @@
+Java HashMap example to add() elements
+Here, we see different ways to insert elements.
+1.	import java.util.*;  
+2.	class HashMap1{  
+3.	 public static void main(String args[]){  
+4.	   HashMap<Integer,String> hm=new HashMap<Integer,String>();    
+5.	    System.out.println("Initial list of elements: "+hm);  
+6.	      hm.put(100,"Amit");    
+7.	      hm.put(101,"Vijay");    
+8.	      hm.put(102,"Rahul");   
+9.	       
+10.	      System.out.println("After invoking put() method ");  
+11.	      for(Map.Entry m:hm.entrySet()){    
+12.	       System.out.println(m.getKey()+" "+m.getValue());    
+13.	      }  
+14.	        
+15.	      hm.putIfAbsent(103, "Gaurav");  
+16.	      System.out.println("After invoking putIfAbsent() method ");  
+17.	      for(Map.Entry m:hm.entrySet()){    
+18.	           System.out.println(m.getKey()+" "+m.getValue());    
+19.	          }  
+20.	      HashMap<Integer,String> map=new HashMap<Integer,String>();  
+21.	      map.put(104,"Ravi");  
+22.	      map.putAll(hm);  
+23.	      System.out.println("After invoking putAll() method ");  
+24.	      for(Map.Entry m:map.entrySet()){    
+25.	           System.out.println(m.getKey()+" "+m.getValue());    
+26.	          }  
+27.	 }  
+28.	}  
+Initial list of elements: {}
+After invoking put() method 
+100 Amit
+101 Vijay
+102 Rahul
+After invoking putIfAbsent() method 
+100 Amit
+101 Vijay
+102 Rahul
+103 Gaurav
+After invoking putAll() method 
+100 Amit
+101 Vijay
+102 Rahul
+103 Gaurav
+104 Ravi
+
+Java HashMap example to remove() elements
+Here, we see different ways to remove elements.
+1.	import java.util.*;  
+2.	public class HashMap2 {  
+3.	   public static void main(String args[]) {  
+4.	    HashMap<Integer,String> map=new HashMap<Integer,String>();          
+5.	      map.put(100,"Amit");    
+6.	      map.put(101,"Vijay");    
+7.	      map.put(102,"Rahul");  
+8.	      map.put(103, "Gaurav");  
+9.	    System.out.println("Initial list of elements: "+map);  
+10.	    //key-based removal  
+11.	    map.remove(100);  
+12.	    System.out.println("Updated list of elements: "+map);  
+13.	    //value-based removal  
+14.	    map.remove(101);  
+15.	    System.out.println("Updated list of elements: "+map);  
+16.	    //key-value pair based removal  
+17.	    map.remove(102, "Rahul");  
+18.	    System.out.println("Updated list of elements: "+map);  
+19.	   }      
+20.	}  
+Output:
+Initial list of elements: {100=Amit, 101=Vijay, 102=Rahul, 103=Gaurav}
+Updated list of elements: {101=Vijay, 102=Rahul, 103=Gaurav}
+Updated list of elements: {102=Rahul, 103=Gaurav}
+Updated list of elements: {103=Gaurav}
+
