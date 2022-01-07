@@ -1,0 +1,67 @@
+HashMap in Java with Examples
+
+HashMap<K, V> is a part of Java’s collection since Java 1.2. This class is found in java.util package. It provides the basic implementation of the Map interface of Java. It stores the data in (Key, Value) pairs, and you can access them by an index of another type (e.g. an Integer). One object is used as a key (index) to another object (value). If you try to insert the duplicate key, it will replace the element of the corresponding key.
+HashMap is similar to HashTable, but it is unsynchronized. It allows to store the null keys as well, but there should be only one null key object and there can be any number of null values.  This class makes no guarantees as to the order of the map. To use this class and its methods, you need to import java.util.HashMap package or its superclass.
+
+•	Java
+// Java program to illustrate HashMap class of java.util
+// package
+ 
+// Importing HashMap class
+import java.util.HashMap;
+ 
+// Main class
+public class GFG {
+ 
+    // Main driver method
+    public static void main(String[] args)
+    {
+        // Create an empty hash map by declaring object
+        // of string and integer type
+        HashMap<String, Integer> map = new HashMap<>();
+ 
+        // Adding elements to the Map
+        // using standard add() method
+        map.put("vishal", 10);
+        map.put("sachin", 30);
+        map.put("vaibhav", 20);
+ 
+        // Print size and content of the Map
+        System.out.println("Size of map is:- "
+                           + map.size());
+ 
+        // Printing elements in object of Map
+        System.out.println(map);
+ 
+        // Checking if a key is present and if
+        // present, print value by passing
+        // random element
+        if (map.containsKey("vishal")) {
+ 
+            // Mapping
+            Integer a = map.get("vishal");
+ 
+            // Printing value fr the corresponding key
+            System.out.println("value for key"
+                               + " \"vishal\" is:- " + a);
+        }
+    }
+}
+Output
+Size of map is:- 3
+{vaibhav=20, vishal=10, sachin=30}
+value for key "vishal" is:- 10
+ Syntax: Declaration
+public class HashMap<K,V> extends AbstractMap<K,V>
+                          implements Map<K,V>, Cloneable, Serializable
+Parameters: It takes two parameters namely as follows:
+•	The type of keys maintained by this map
+•	The type of mapped values
+HashMap implements Serializable, Cloneable, Map<K, V> interfaces. HashMap extends AbstractMap<K, V> class. The direct subclasses are LinkedHashMap, PrinterStateReasons.
+Constructors in HashMap is as follows:
+HashMap provides 4 constructors and the access modifier of each is public which are listed as follows:
+1.	HashMap()
+2.	HashMap(int initialCapacity)
+3.	HashMap(int initialCapacity, float loadFactor)
+4.	HashMap(Map map)
+
