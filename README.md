@@ -29,3 +29,11 @@ Day 31-45
 •	Searching
 
 •	Sorting 
+
+• Hashmaps
+
+• Trees
+
+• Heaps
+
+• Sliding Windows
