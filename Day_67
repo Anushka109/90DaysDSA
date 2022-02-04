@@ -1,0 +1,217 @@
+Warnsdorff’s algorithm for Knight’s tour problem
+
+Problem : A knight is placed on the first block of an empty board and, moving according to the rules of chess, must visit each square exactly once. 
+
+Following is an example path followed by Knight to cover all the cells. The below grid represents a chessboard with 8 x 8 cells. Numbers in cells indicate move number of Knight. 
+ 
+
+knight-tour-problem
+
+We have discussed Backtracking Algorithm for solution of Knight’s tour. In this post Warnsdorff’s heuristic is discussed. 
+Warnsdorff’s Rule: 
+
+We can start from any initial position of the knight on the board.
+We always move to an adjacent, unvisited square with minimal degree (minimum number of unvisited adjacent).
+This algorithm may also more generally be applied to any graph. 
+
+Some definitions:  
+
+A position Q is accessible from a position P if P can move to Q by a single Knight’s move, and Q has not yet been visited.
+The accessibility of a position P is the number of positions accessible from P.
+Algorithm:  
+
+Set P to be a random initial position on the board
+Mark the board at P with the move number “1”
+Do following for each move number from 2 to the number of squares on the board: 
+let S be the set of positions accessible from P.
+Set P to be the position in S with minimum accessibility
+Mark the board at P with the current move number
+Return the marked board — each square will be marked with the move number on which it is visited.
+Below is implementation of above algorithm.  
+
+
+// Java program to for Kinight's tour problem using
+// Warnsdorff's algorithm
+import java.util.concurrent.ThreadLocalRandom;
+ 
+class GFG
+{
+    public static final int N = 8;
+ 
+    // Move pattern on basis of the change of
+    // x coordinates and y coordinates respectively
+    public static final int cx[] = {1, 1, 2, 2, -1, -1, -2, -2};
+    public static final int cy[] = {2, -2, 1, -1, 2, -2, 1, -1};
+ 
+    // function restricts the knight to remain within
+    // the 8x8 chessboard
+    boolean limits(int x, int y)
+    {
+        return ((x >= 0 && y >= 0) &&
+                 (x < N && y < N));
+    }
+ 
+    /* Checks whether a square is valid and
+    empty or not */
+    boolean isempty(int a[], int x, int y)
+    {
+        return (limits(x, y)) && (a[y * N + x] < 0);
+    }
+ 
+    /* Returns the number of empty squares
+    adjacent to (x, y) */
+    int getDegree(int a[], int x, int y)
+    {
+        int count = 0;
+        for (int i = 0; i < N; ++i)
+            if (isempty(a, (x + cx[i]),
+                           (y + cy[i])))
+                count++;
+ 
+        return count;
+    }
+ 
+    // Picks next point using Warnsdorff's heuristic.
+    // Returns false if it is not possible to pick
+    // next point.
+    Cell nextMove(int a[], Cell cell)
+    {
+        int min_deg_idx = -1, c,
+            min_deg = (N + 1), nx, ny;
+ 
+        // Try all N adjacent of (*x, *y) starting
+        // from a random adjacent. Find the adjacent
+        // with minimum degree.
+        int start = ThreadLocalRandom.current().nextInt(1000) % N;
+        for (int count = 0; count < N; ++count)
+        {
+            int i = (start + count) % N;
+            nx = cell.x + cx[i];
+            ny = cell.y + cy[i];
+            if ((isempty(a, nx, ny)) &&
+                (c = getDegree(a, nx, ny)) < min_deg)
+            {
+                min_deg_idx = i;
+                min_deg = c;
+            }
+        }
+ 
+        // IF we could not find a next cell
+        if (min_deg_idx == -1)
+            return null;
+ 
+        // Store coordinates of next point
+        nx = cell.x + cx[min_deg_idx];
+        ny = cell.y + cy[min_deg_idx];
+ 
+        // Mark next move
+        a[ny * N + nx] = a[(cell.y) * N +
+                           (cell.x)] + 1;
+ 
+        // Update next point
+        cell.x = nx;
+        cell.y = ny;
+ 
+        return cell;
+    }
+ 
+    /* displays the chessboard with all the
+    legal knight's moves */
+    void print(int a[])
+    {
+        for (int i = 0; i < N; ++i)
+        {
+            for (int j = 0; j < N; ++j)
+                System.out.printf("%d\t", a[j * N + i]);
+            System.out.printf("\n");
+        }
+    }
+ 
+    /* checks its neighbouring squares */
+    /* If the knight ends on a square that is one
+    knight's move from the beginning square,
+    then tour is closed */
+    boolean neighbour(int x, int y, int xx, int yy)
+    {
+        for (int i = 0; i < N; ++i)
+            if (((x + cx[i]) == xx) &&
+                ((y + cy[i]) == yy))
+                return true;
+ 
+        return false;
+    }
+ 
+    /* Generates the legal moves using warnsdorff's
+    heuristics. Returns false if not possible */
+    boolean findClosedTour()
+    {
+        // Filling up the chessboard matrix with -1's
+        int a[] = new int[N * N];
+        for (int i = 0; i < N * N; ++i)
+            a[i] = -1;
+ 
+        // initial position
+        int sx = 3;
+        int sy = 2;
+ 
+        // Current points are same as initial points
+        Cell cell = new Cell(sx, sy);
+ 
+        a[cell.y * N + cell.x] = 1; // Mark first move.
+ 
+        // Keep picking next points using
+        // Warnsdorff's heuristic
+        Cell ret = null;
+        for (int i = 0; i < N * N - 1; ++i)
+        {
+            ret = nextMove(a, cell);
+            if (ret == null)
+                return false;
+        }
+ 
+        // Check if tour is closed (Can end
+        // at starting point)
+        if (!neighbour(ret.x, ret.y, sx, sy))
+            return false;
+ 
+        print(a);
+        return true;
+    }
+ 
+    // Driver Code
+    public static void main(String[] args)
+    {
+        // While we don't get a solution
+        while (!new GFG().findClosedTour())
+        {
+            ;
+        }
+    }
+}
+ 
+class Cell
+{
+    int x;
+    int y;
+ 
+    public Cell(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+Output: 
+
+59    14    63    32    1    16    19    34    
+62    31    60    15    56    33    2    17    
+13    58    55    64    49    18    35    20    
+30    61    42    57    54    51    40    3    
+43    12    53    50    41    48    21    36    
+26    29    44    47    52    39    4    7    
+11    46    27    24    9    6    37    22    
+28    25    10    45    38    23    8    5    
+The Hamiltonian path problem is NP-hard in general. In practice, Warnsdorf’s heuristic successfully finds a solution in linear time.
+
+Do you know? 
+“On an 8 × 8 board, there are exactly 26,534,728,821,064 directed closed tours (i.e. two tours along the same path that travel in opposite directions are counted separately, as are rotations and reflections). The number of undirected closed tours is half this number, since every tour can be traced in reverse!”
