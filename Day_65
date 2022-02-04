@@ -1,0 +1,105 @@
+Travelling Salesman Problem implementation using BackTracking
+
+Travelling Salesman Problem (TSP): Given a set of cities and distance between every pair of cities, the problem is to find the shortest possible route that visits every city exactly once and returns back to the starting point.
+Note the difference between Hamiltonian Cycle and TSP. The Hamiltoninan cycle problem is to find if there exist a tour that visits every city exactly once. Here we know that Hamiltonian Tour exists (because the graph is complete) and in fact many such tours exist, the problem is to find a minimum weight Hamiltonian Cycle. 
+For example, consider the graph shown in the figure. A TSP tour in the graph is 1 -> 2 -> 4 -> 3 -> 1. The cost of the tour is 10 + 25 + 30 + 15 which is 80.
+The problem is a famous NP hard problem. There is no polynomial time know solution for this problem.
+ 
+
+TSP
+
+ 
+
+Output of Given Graph: 
+Minimum weight Hamiltonian Cycle : 10 + 25 + 30 + 15 = 80 
+ 
+
+Approach: In this post, implementation of simple solution is discussed. 
+ 
+
+Consider city 1 (let say 0th node) as the starting and ending point. Since route is cyclic, we can consider any point as starting point.
+Start traversing from the source to its adjacent nodes in dfs manner.
+Calculate cost of every traversal and keep track of minimum cost and keep on updating the value of minimum cost stored value.
+Return the permutation with minimum cost.
+Below is the implementation of the above approach: 
+ 
+
+
+// Java implementation of the approach
+class GFG
+{
+ 
+    // Function to find the minimum weight
+    // Hamiltonian Cycle
+    static int tsp(int[][] graph, boolean[] v,
+                   int currPos, int n,
+                   int count, int cost, int ans)
+    {
+ 
+        // If last node is reached and it has a link
+        // to the starting node i.e the source then
+        // keep the minimum value out of the total cost
+        // of traversal and "ans"
+        // Finally return to check for more possible values
+        if (count == n && graph[currPos][0] > 0)
+        {
+            ans = Math.min(ans, cost + graph[currPos][0]);
+            return ans;
+        }
+ 
+        // BACKTRACKING STEP
+        // Loop to traverse the adjacency list
+        // of currPos node and increasing the count
+        // by 1 and cost by graph[currPos,i] value
+        for (int i = 0; i < n; i++)
+        {
+            if (v[i] == false && graph[currPos][i] > 0)
+            {
+ 
+                // Mark as visited
+                v[i] = true;
+                ans = tsp(graph, v, i, n, count + 1,
+                          cost + graph[currPos][i], ans);
+ 
+                // Mark ith node as unvisited
+                v[i] = false;
+            }
+        }
+        return ans;
+    }
+ 
+    // Driver code
+    public static void main(String[] args)
+    {
+ 
+        // n is the number of nodes i.e. V
+        int n = 4;
+ 
+        int[][] graph = {{0, 10, 15, 20},
+                         {10, 0, 35, 25},
+                         {15, 35, 0, 30},
+                         {20, 25, 30, 0}};
+ 
+        // Boolean array to check if a node
+        // has been visited or not
+        boolean[] v = new boolean[n];
+ 
+        // Mark 0th node as visited
+        v[0] = true;
+        int ans = Integer.MAX_VALUE;
+ 
+        // Find the minimum weight Hamiltonian Cycle
+        ans = tsp(graph, v, 0, n, 1, 0, ans);
+ 
+        // ans is the minimum weight Hamiltonian Cycle
+        System.out.println(ans);
+    }
+}
+
+Output: 
+80
+ 
+
+Time Complexity: O(N!), As for the first node there are N possibilities and for the second node there are n – 1 possibilities.
+For N nodes time complexity = N * (N – 1) * . . . 1 = O(N!)
+Auxiliary Space: O(N)
