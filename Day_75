@@ -1,0 +1,19 @@
+OOPs | Object Oriented Design
+
+Object-oriented design started right from the moment computers were invented. Programming was there, and programming approaches came into the picture. Programming is basically giving certain instructions to the computer. 
+At the beginning of the computing era, programming was usually limited to machine language programming. Machine language means those sets of instructions that are specific to a particular machine or processor, which are in the form of 0’s and 1’s. These are sequences of bits (0100110…). But it’s quite difficult to write a program or develop software in machine language.
+It’s actually impossible to develop software used in today’s scenarios with sequences of bits. This was the main reason programmers moved on to the next generation of programming languages, developing assembly languages, which were near enough to the English language to easily understand. These assembly languages were used in microprocessors. With the invention of the microprocessor, assembly languages flourished and ruled over the industry, but it was not enough. Again, programmers came up with something new, i.e., structured and procedural programming.
+ Structured Programming – 
+The basic principle of the structured programming approach is to divide a program into functions and modules. The use of modules and functions makes the program more understandable and readable. It helps to write cleaner code and to maintain control over the functions and modules. This approach gives importance to functions rather than data. It focuses on the development of large software applications, for example, C was used for modern operating system development. The programming languages: PASCAL (introduced by Niklaus Wirth) and C (introduced by Dennis Ritchie) follow this approach.
+Procedural Programming Approach – 
+This approach is also known as the top-down approach. In this approach, a program is divided into functions that perform specific tasks. This approach is mainly used for medium-sized applications. Data is global, and all the functions can access global data. The basic drawback of the procedural programming approach is that data is not secured because data is global and can be accessed by any function. Program control flow is achieved through function calls and goto statements. The programming languages: FORTRAN (developed by IBM) and COBOL (developed by Dr. Grace Murray Hopper) follow this approach. 
+These programming constructs were developed in the late 1970s and 1980s. There were still some issues with these languages, though they fulfilled the criteria of well-structured programs, software, etc. They were not as structured as the requirements were at that time. They seem to be over-generalized and don’t correlate with real-time applications.
+To solve such kinds of problems, OOP, an object-oriented approach was developed as a solution.
+ 
+
+
+
+The Object-Oriented Programming (OOP) Approach – 
+The OOP concept was basically designed to overcome the drawback of the above programming methodologies, which were not so close to real-world applications. The demand was increased, but still, conventional methods were used. This new approach brought a revolution in the programming methodology field.
+Object-oriented programming (OOP) is nothing but that which allows the writing of programs with the help of certain classes and real-time objects. We can say that this approach is very close to the real-world and its applications because the state and behaviour of these classes and objects are almost the same as real-world objects.
+
