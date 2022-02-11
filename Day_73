@@ -1,0 +1,17 @@
+Object Oriented Programming (OOPs) Concept in Java
+
+As the name suggests, Object-Oriented Programming or OOPs refers to languages that uses objects in programming. Object-oriented programming aims to implement real-world entities like inheritance, hiding, polymorphism etc in programming. The main aim of OOP is to bind together the data and the functions that operate on them so that no other part of the code can access this data except that function. 
+
+Let us do discuss pre-requisites by polishing concepts of methods declaration and passing. Starting off with the method declaration, it consists of six components: 
+
+Access Modifier: Defines access type of the method i.e. from where it can be accessed in your application. In Java, there 4 type of the access specifiers. 
+public: accessible in all class in your application.
+protected: accessible within the package in which it is defined and in its subclass(es)(including subclasses declared outside the package)
+private: accessible only within the class in which it is defined.
+default (declared/defined without using any modifier): accessible within same class and package within which its class is defined.
+The return type: The data type of the value returned by the method or void if does not return a value.
+Method Name: the rules for field names apply to method names as well, but the convention is a little different.
+Parameter list: Comma separated list of the input parameters are defined, preceded with their data type, within the enclosed parenthesis. If there are no parameters, you must use empty parentheses ().
+Exception list: The exceptions you expect by the method can throw, you can specify these exception(s).
+Method body: it is enclosed between braces. The code you need to be executed to perform your intended operations.
+Message Passing: Objects communicate with one another by sending and receiving information to each other. A message for an object is a request for execution of a procedure and therefore will invoke a function in the receiving object that generates the desired results. Message passing involves specifying the name of the object, the name of the function and the information to be sent.
