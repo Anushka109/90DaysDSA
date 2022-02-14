@@ -1,0 +1,61 @@
+Object Oriented Metrices in Software Engineering
+
+These are used to determine success or failure of a person also to quantify the improvements in the software throughout its process. These metrics can be used to reinforce good OO programming technique which lead to more reliable code. Object-oriented software engineering metrics are units of measurement that are used to characterize:
+
+object-oriented software engineering products, e.g., designs source code, and the test cases.
+object-oriented software engineering processes, e.g., designing and coding.
+object-oriented software engineering people, e.g., productivity of an individual designer.
+Why are Object-Oriented Software Engineering Metrics Different?
+
+OOSE is different because of the following reasons as depicted in the following figure:
+
+
+
+Localization : It is the process of placing items in close physical nearness to each other.
+
+Functional decomposition processes localize information around functions.
+Data-driven approaches localize information around data.
+Object-oriented approaches localize information around objects.
+In object-oriented software , from the name suggests the localization is based on objects. This means:
+
+Although we may speak of the functionality provided by an object, atleast some of our metrics identification and gathering effort must recognize the “object” as basic unit of software.
+Within systems of objects, localization between functionality and objects is not one-to-one relationships. For example, there are many objects for one function and also one object can have many functions.
+Encapsulation : It is the packaging of a collection of items.
+
+Low-level examples of encapsulation include records and arrays.
+Subprograms are mid level mechanisms for encapsulation.
+There are still very long encapsulation mechanisms for the object-oriented programming languages, e.g., C++’s, classes, Ada’s packages, and Modula 3’s modules.
+Objects encapsulates:
+Knowledge of state
+Advertised capabilities
+Other objects
+Exceptions
+Constants
+Concepts
+Information Hiding: It is the suppression or hiding of the objects.
+
+We show only the information which is needed to accomplish our goals.
+Degree of information hiding ranges from partially restricted visibility to total invisibility.
+Encapsulation and information hiding are not same thing e.g., an item can be encapsulated but still be to totally visible.
+It plays a direct role in such metrics as object coupling and the degree of information hiding.
+
+Inheritance: It is mechanism where one object acquires the characteristics from one, or more , other objects.
+
+Some object-oriented languages support only single inheritance.
+Some object-oriented languages support only multiple inheritance.
+Inheritance type and their semantics vary from language to language.
+There are many object-oriented software engineering metrices which are based on inheritance e.g.,
+
+number of children
+number of parents
+class hierarchy nesting level
+Abstraction: It is the mechanism where we focus only on important details of a concept, while ignoring the in essential details.
+
+It is a relative concept.
+There are also different categories of abstraction, e.g., functional data, process and object abstraction.
+Objects are treated as high-level entities in object abstraction.
+Classes: There are three commonly used views on the definition for “class”.
+
+Class as a cookie cutter: For the structurally identically items, a class is a pattern, template, or a blueprint. The items which can be created using class are called instances.
+Class as an instance factory: Basically class is a thing which contains both a pattern and a mechanism for creating items based on that pattern and instances are like individual items that are “manufactured” by using class creation mechanism.
+A class is a set of all the items which are created using a specific pattern, i.e., the class is the set of all instances of that pattern.
