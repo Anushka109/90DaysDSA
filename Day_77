@@ -1,0 +1,39 @@
+Object Oriented Analysis and Design
+
+Object Oriented Analysis (OOA):
+Object Oriented Analysis (OOA) is the first technical activity performed as part of object oriented software engineering. OOA introduces new concepts to investigate a problem. It is based in a set of basic principles, which are as follows-
+
+The information domain is modeled.
+Behavior is represented.
+Function is described.
+Data, functional, and behavioral models are divided to uncover greater detail.
+Early models represent the essence of the problem, while later ones provide implementation
+details.
+The above notes principles form the foundation for the OOA approach.
+
+Object Oriented Design (OOD):
+An analysis model created using object oriented analysis is transformed by object oriented design into a design model that works as a plan for software creation. OOD results in a design having several different levels of modularity i.e., The major system components are partitioned into subsystems (a system level “modular”), and data their manipulation operations are encapsulated into objects (a modular form that is the building block of an OO system.).
+
+In addition, OOD must specify some data organization of attributes and a procedural description of each operation.
+Shows a design pyramid for object oriented systems. It is having the following four layers.
+
+
+
+The Subsystem Layer :
+It represents the subsystem that enables software to achieve user requirements and implement technical frameworks that meet user needs.
+
+
+The Class and Object Layer :
+It represents the class hierarchies that enable the system to develop using generalization and specialization. This layer also represents each object.
+
+
+The Message Layer :
+It represents the design details that enable each object to communicate with its partners. It establishes internal and external interfaces for the system.
+
+
+The Responsibilities Layer :
+It represents the data structure and algorithmic design for all the attributes and operations for each object.
+The Object Oriented design pyramid specifically emphasizes specific product or system design.
+
+Note, however, that another design layer exists, which forms the base on which the pyramid rests. It focuses on the core layer the design of the domain object, which plays an important role in building the infrastructure for the Object Oriented system by providing support for human/computer interface activities, task management.
+
