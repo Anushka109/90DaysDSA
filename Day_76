@@ -1,0 +1,34 @@
+Characteristics of Good Object Oriented Design
+
+It is quite obvious that there are many subjective judgments concerned in inward at a decent object-oriented style. Therefore, many alternative design solutions to the same problem are possible. so as to be able to confirm that of any 2 design is best, some criteria for decision making the goodness of a design should be known. the subsequent are a number of the accepted criteria for decision making the goodness of a design.
+
+Coupling guidelines:
+The number of messages between 2 objects or among a gaggle of objects ought to be minimum. Excessive coupling between objects is decided to standard style and prevents reuse.
+
+Cohesion guideline:
+In OOD, cohesion is regarding 3 levels:
+
+Cohesiveness of the individual methods:
+The cohesiveness of every of the individual technique is fascinating since it assumes that every technique will solely a well-defined perform.
+Cohesiveness of the data and methods within a class:
+This is fascinating since it assures that the ways of associate object do actions that the thing is, of course, accountable, i.e. it assures that no action has been improperly mapped to associate object.
+Cohesiveness of an entire class hierarchy:
+The cohesiveness of ways among a category is fascinating since it promotes encapsulation of the objects.
+Hierarchy and factoring guidelines:
+A base category mustn’t have too several subclasses. If too several subclasses area unit derived from one base category, then it becomes troublesome to grasp the planning. In fact, there ought to about be no quite 7±2 categories derived from a base category at any level.
+
+Keeping message protocols simple:
+Complex message protocols area unit a sign of excessive coupling among objects. If a message needs quite three parameters, then it’s a sign of dangerous style.
+
+Number of Methods:
+Objects with an outsized range of ways area unit possible to be additional application-specific and conjointly troublesome to understand – limiting the likelihood of their employ. Therefore, objects mustn’t have too several ways. this can be alive of the quality of a category.it is possible that the categories having quite regarding seven ways would have issues.
+
+Depth of the inheritance tree:
+The deeper a category is within the class inheritance hierarchy, the bigger is that the range of ways it’s possible to inherit, creating it additionally advanced. Therefore, the peak of the inheritance tree mustn’t be terribly giant.
+
+Number of messages per use case:
+If ways of an outsized range of objects area unit invoked in a very chain action in response to one message, testing and debugging of the objects becomes difficult. Therefore, one message mustn’t end in excessive message generation and transmission in a very system.
+
+Response for a class:
+This is a life of the most range of ways that associate instance of this category would decision. If an identical technique is termed quite once, then it’s counted just the once. a category that calls quite regarding seven totally different ways is liable to errors.
+
